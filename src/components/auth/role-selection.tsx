@@ -57,7 +57,7 @@ export function RoleSelection() {
       <div className="w-full max-w-4xl">
         <div className="text-center mb-12 animate-fade-in">
           <h1 className="text-4xl font-bold text-foreground mb-4">
-            Welcome to <span className="text-primary">PlaceTracker</span>
+            Welcome to <span className="text-primary">HireLink</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
             Your comprehensive placement preparation platform
