@@ -7,9 +7,12 @@ import { JobApplications } from "./job-applications";
 import { MockTests } from "./mock-tests";
 import { ResumeBuilder } from "./resume-builder";
 import { Button } from "@/components/ui/button";
-import { Bell, Settings, User, LogOut, Home } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Bell, Settings, User, LogOut, Home, BookOpen, FileText, Calendar, Briefcase } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function StudentDashboard() {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-surface via-background to-surface">
       {/* Header */}
@@ -30,13 +33,57 @@ export function StudentDashboard() {
               <Button variant="ghost" size="sm">
                 <Bell className="h-4 w-4" />
               </Button>
-              <Button variant="ghost" size="sm">
-                <Settings className="h-4 w-4" />
-              </Button>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <Settings className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem onClick={() => navigate("/student/practice-exams")}>
+                    <BookOpen className="h-4 w-4 mr-2" />
+                    Practice Exams
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/student/resume-builder")}>
+                    <FileText className="h-4 w-4 mr-2" />
+                    Resume Builder
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/student/job-applications")}>
+                    <Briefcase className="h-4 w-4 mr-2" />
+                    Job Applications
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => navigate("/student/calendar")}>
+                    <Calendar className="h-4 w-4 mr-2" />
+                    Calendar
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              
               <ThemeToggle />
-              <Button variant="ghost" size="sm">
-                <User className="h-4 w-4" />
-              </Button>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm">
+                    <User className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem onClick={() => navigate("/student/profile")}>
+                    <User className="h-4 w-4 mr-2" />
+                    My Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="h-4 w-4 mr-2" />
+                    Settings
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => navigate("/")} className="text-destructive">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
         </div>
